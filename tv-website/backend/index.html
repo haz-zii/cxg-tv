@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TV Control</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="main">
+            <div class="side-container">
+                <div id="logo"><img src="media/cxglogo.svg" alt="cxglogo"></div>
+
+                <div id="time">
+                    <span id="header">time</span>
+                    <span id="liveDate">date</span>
+                </div>
+
+                <div id="currently-showcasing">
+                    <span id="header">currently showcasing</span>
+                    <div class="media" id="currentPreview">
+                        <img src="media/picture.png" alt="">
+                    </div>
+                </div>
+
+                <div id="upload-immediately">
+                    <span id="header">upload immediately</span>
+                    <span id="date-text">png, jpeg, mp4, mov.</span>
+                    <div class="button-media" id="uploadBtn">upload</div>
+                    <input id="mediaInput" type="file" accept="image/*,video/*" hidden>
+                </div>
+
+                <div id="queue">
+                    <span id="header">Queuing Timing</span>
+                    <div class="slider-container">
+                        <label for="duration">Per Second:</label>
+                        <input type="range" id="duration" name="duration" min="0" max="100" value="50">
+                        <output id="durationValue">50</output>
+                    </div>
+                </div>
+
+                <div id="submit">
+                    <span id="header">submit</span>
+                </div>
+
+            </div>
+            
+            <div class="carousel-container">
+                <div id="carousel01">
+                    <div id="title">Carousel</div>
+                    <div class="header-actions">
+                        <button type="button" class="clear-all-btn" id="clearQueueBtn">clear all</button>
+                        <div class="addition" id="carouselAddBtn"><img src="media/plus.svg" alt="add-symbol"></div>
+                    </div>
+                </div>
+                <div class="carousel-container2" id="queueList">
+                    <div class="media-queue is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                </div>
+            </div>
+
+            <div class="library-container">
+                <div id="carousel01">
+                    <div id="title">Media Library </div>
+                    <div class="header-actions">
+                        <button type="button" class="clear-all-btn" id="clearLibraryBtn">clear all</button>
+                        <div class="addition" id="libraryAddBtn"><img src="media/plus.svg" alt="add-symbol"></div>
+                    </div>
+                </div>
+                <div class="media-container" id="mediaList">
+                    <div class="media-queue2 is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue2 is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue2 is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue2 is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue2 is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue2 is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                    <div class="media-queue2 is-placeholder"><img src="media/test.png" alt="media-box"></div>
+                </div>
+            </div>
+
+        </div>
+        
+        <script src="script.js"></script>
+    </body>
+</html>

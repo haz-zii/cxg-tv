@@ -1,0 +1,4 @@
+.DS_Store
+backend/uploads/
+backend/data/state.json
+backend/.vscode/
