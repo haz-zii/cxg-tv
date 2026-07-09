@@ -21,7 +21,8 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Mulish", sans-serif;
+  font-optical-sizing: auto;
   background: #fff;
   padding: 5%;
   --panel-height: min(947px, 82vh);
@@ -162,7 +163,7 @@ body {
 
 #header{
     color: #000;
-    font-family: "Mark Pro";
+    font-family: "Mulish", sans-serif;
     font-size: 21.228px;
     font-style: normal;
     font-weight: 800;
@@ -171,7 +172,7 @@ body {
 
 #date-text{
     color: #000;
-    font-family: "Mark Pro";
+    font-family: "Mulish", sans-serif;
     font-size: 16.679px;
     font-style: normal;
     font-weight: 400;
@@ -306,7 +307,7 @@ body {
 
 #title{
     color: #000;
-    font-family: "Mark Pro";
+    font-family: "Mulish", sans-serif;
     font-size: 38px;
     font-style: normal;
     font-weight: 800;
@@ -333,7 +334,7 @@ body {
   border: none;
   background: transparent;
   color: #00564C;
-  font-family: "Mark Pro", Arial, sans-serif;
+  font-family: "Mulish", sans-serif;
   font-size: 14px;
   font-weight: 800;
   cursor: pointer;
