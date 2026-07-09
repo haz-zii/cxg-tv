@@ -15,6 +15,7 @@ const carouselAddBtn = document.getElementById("carouselAddBtn");
 const libraryAddBtn = document.getElementById("libraryAddBtn");
 const clearQueueBtn = document.getElementById("clearQueueBtn");
 const clearLibraryBtn = document.getElementById("clearLibraryBtn");
+const MEDIA_BASE = window.TV_CONFIG?.apiBase || "";
 
 let uploadMode = "library";
 
@@ -49,16 +50,17 @@ function createDeleteButton(label) {
 }
 
 function renderMediaElement(media) {
+  const mediaUrl = `${MEDIA_BASE}${media.url}`;
   if (media.type === "video") {
     const video = document.createElement("video");
-    video.src = media.url;
+    video.src = mediaUrl;
     video.muted = true;
     video.playsInline = true;
     video.preload = "metadata";
     return video;
   }
   const img = document.createElement("img");
-  img.src = media.url;
+  img.src = mediaUrl;
   img.alt = media.name;
   return img;
 }
