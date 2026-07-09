@@ -1,5 +1,6 @@
-const API = window.TV_CONFIG?.apiBase ? `${window.TV_CONFIG.apiBase}/api` : null;
-const MEDIA_BASE = window.TV_CONFIG?.apiBase || "";
+const API_BASE = window.TV_CONFIG?.apiBase || "https://api.cxg.sa";
+const API = `${API_BASE}/api`;
+const MEDIA_BASE = API_BASE;
 
 const videoPlayer = document.getElementById("videoPlayer");
 const imagePlayer = document.getElementById("imagePlayer");
@@ -82,7 +83,5 @@ async function refresh() {
   }
 }
 
-if (API) {
-  refresh().catch(() => {});
-  setInterval(() => refresh().catch(() => {}), 3000);
-}
+refresh().catch(() => {});
+setInterval(() => refresh().catch(() => {}), 3000);

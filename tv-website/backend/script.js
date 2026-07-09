@@ -1,4 +1,5 @@
-const API = window.TV_CONFIG?.apiBase ? `${window.TV_CONFIG.apiBase}/api` : null;
+const API_BASE = window.TV_CONFIG?.apiBase || "https://api.cxg.sa";
+const API = `${API_BASE}/api`;
 
 const backendNotice = document.getElementById("backendNotice");
 
@@ -15,7 +16,7 @@ const carouselAddBtn = document.getElementById("carouselAddBtn");
 const libraryAddBtn = document.getElementById("libraryAddBtn");
 const clearQueueBtn = document.getElementById("clearQueueBtn");
 const clearLibraryBtn = document.getElementById("clearLibraryBtn");
-const MEDIA_BASE = window.TV_CONFIG?.apiBase || "";
+const MEDIA_BASE = API_BASE;
 
 let uploadMode = "library";
 
