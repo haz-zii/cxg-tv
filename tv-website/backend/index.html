@@ -10,6 +10,11 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+        <div id="backendNotice" class="backend-notice" hidden>
+            Start the server on this computer: <code>cd backend && node server.js</code>
+            Then use <a href="http://localhost:8080">localhost:8080</a> (admin) and
+            <a href="http://localhost:8080/tv">localhost:8080/tv</a> (TV display).
+        </div>
         <div class="main">
             <div class="side-container">
                 <div id="logo"><img src="media/cxglogo.svg" alt="cxglogo"></div>
@@ -88,6 +93,7 @@
 
         </div>
         
+        <script src="config.js"></script>
         <script src="script.js"></script>
     </body>
 </html>

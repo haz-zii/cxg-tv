@@ -1,4 +1,6 @@
-const API = "/api";
+const API = window.TV_CONFIG?.apiBase ? `${window.TV_CONFIG.apiBase}/api` : null;
+
+const backendNotice = document.getElementById("backendNotice");
 
 const queueList = document.getElementById("queueList");
 const mediaList = document.getElementById("mediaList");
@@ -91,7 +93,21 @@ function setPreviewMedia(media) {
   }
 }
 
+function showBackendNotice() {
+  if (backendNotice) backendNotice.hidden = false;
+}
+
+function hideBackendNotice() {
+  if (backendNotice) backendNotice.hidden = true;
+}
+
 async function loadState() {
+  if (!API) {
+    showBackendNotice();
+    return;
+  }
+  hideBackendNotice();
+
   const state = await jsonFetch(`${API}/state`);
 
   if (state.defaultDurationSec) {
@@ -295,5 +311,9 @@ submitBtn.addEventListener("click", async () => {
 
 updateClock();
 setInterval(updateClock, 1000);
-loadState().catch(() => {});
-setInterval(() => loadState().catch(() => {}), 4000);
+if (API) {
+  loadState().catch(() => showBackendNotice());
+  setInterval(() => loadState().catch(() => {}), 4000);
+} else {
+  showBackendNotice();
+}

@@ -1,5 +1,5 @@
-const API = "http://localhost:8080/api";
-const MEDIA_BASE = "http://localhost:8080";
+const API = window.TV_CONFIG?.apiBase ? `${window.TV_CONFIG.apiBase}/api` : null;
+const MEDIA_BASE = window.TV_CONFIG?.apiBase || "";
 
 const videoPlayer = document.getElementById("videoPlayer");
 const imagePlayer = document.getElementById("imagePlayer");
@@ -62,6 +62,8 @@ function scheduleNext(durationSec) {
 }
 
 async function refresh() {
+  if (!API) return;
+
   const state = await jsonFetch(`${API}/state`);
   const queueItem = state.currentItem;
   const media = queueItem ? state.media.find((m) => m.id === queueItem.mediaId) : null;
@@ -80,5 +82,7 @@ async function refresh() {
   }
 }
 
-refresh().catch(() => {});
-setInterval(() => refresh().catch(() => {}), 3000);
+if (API) {
+  refresh().catch(() => {});
+  setInterval(() => refresh().catch(() => {}), 3000);
+}

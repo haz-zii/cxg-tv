@@ -4,12 +4,13 @@ const fsp = require("fs/promises");
 const path = require("path");
 const { randomUUID } = require("crypto");
 
-const PORT = 8080;
+const PORT = Number(process.env.PORT) || 8080;
 const ROOT = __dirname;
 const UPLOADS_DIR = path.join(ROOT, "uploads");
 const DATA_DIR = path.join(ROOT, "data");
 const STATE_FILE = path.join(DATA_DIR, "state.json");
 const UI_MEDIA_DIR = path.join(ROOT, "media");
+const FRONTEND_DIR = path.join(ROOT, "..", "frontend");
 
 const contentTypes = {
   ".html": "text/html; charset=utf-8",
@@ -299,6 +300,11 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    if (url.pathname === "/config.js") {
+      sendFile(res, path.join(ROOT, "config.js"));
+      return;
+    }
+
     if (url.pathname === "/styles.css") {
       sendFile(res, path.join(ROOT, "styles.css"));
       return;
@@ -314,6 +320,32 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    if (url.pathname === "/tv") {
+      res.writeHead(302, { Location: "/tv/" });
+      res.end();
+      return;
+    }
+
+    if (url.pathname === "/tv/") {
+      sendFile(res, path.join(FRONTEND_DIR, "index.html"));
+      return;
+    }
+
+    if (url.pathname === "/tv/styles.css") {
+      sendFile(res, path.join(FRONTEND_DIR, "styles.css"));
+      return;
+    }
+
+    if (url.pathname === "/tv/app.js") {
+      sendFile(res, path.join(FRONTEND_DIR, "app.js"));
+      return;
+    }
+
+    if (url.pathname === "/tv/config.js") {
+      sendFile(res, path.join(FRONTEND_DIR, "config.js"));
+      return;
+    }
+
     res.writeHead(404);
     res.end("Not found");
   } catch (error) {
@@ -323,6 +355,8 @@ const server = http.createServer(async (req, res) => {
 
 ensureBaseFiles().then(() => {
   server.listen(PORT, () => {
-    console.log(`Backend running on http://localhost:${PORT}`);
+    console.log(`TV server running`);
+    console.log(`  Admin: http://localhost:${PORT}`);
+    console.log(`  TV:    http://localhost:${PORT}/tv`);
   });
 });

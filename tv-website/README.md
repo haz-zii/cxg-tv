@@ -1,45 +1,49 @@
 # TV Website (Frontend + Backend)
 
-Two separate web apps:
+Local-first TV dashboard. Use GitHub to **store and share code** — the app runs on your computer.
 
-- `frontend/` -> live TV dashboard display (16:9 stage)
-- `backend/` -> your styled admin UI (`index.html`, `styles.css`, `media/` assets) + API server
-
-## Features included
-
-- Upload image/video media from backend panel
-- Queue media items and control carousel playback
-- Frontend dashboard auto-polls and displays current queue item
-- Backend UI matches your original styled design
-- Frontend display is locked to **16:9** and shows only published queue media
-
-## Run backend
+## Quick start (local)
 
 ```bash
 cd backend
 node server.js
 ```
 
-Backend URLs:
-
-- Admin/control site: `http://localhost:8080/admin`
-- API base: `http://localhost:8080/api`
-
-## Run frontend
-
-Use any static web server from `frontend/`. Example with Node:
-
-```bash
-cd frontend
-node -e "require('http').createServer((req,res)=>{const fs=require('fs');const p=require('path');const f=p.join(process.cwd(),req.url==='/'?'index.html':req.url);fs.readFile(f,(e,d)=>{if(e){res.statusCode=404;res.end('Not found');return;}res.end(d);});}).listen(5173)"
-```
-
 Then open:
 
-- `http://localhost:5173`
+| Page | URL |
+|------|-----|
+| **Admin** (upload, queue, submit) | http://localhost:8080 |
+| **TV display** (16:9 carousel) | http://localhost:8080/tv |
+
+That is all you need for full functionality.
+
+## GitHub
+
+Commit the project to GitHub for backup and version control:
+
+```bash
+git add .
+git commit -m "TV website"
+git push
+```
+
+**GitHub Pages** (optional) can host the HTML/CSS for preview:
+
+- https://haz-zii.github.io/cxg-tv/tv-website/backend/index.html
+- https://haz-zii.github.io/cxg-tv/tv-website/frontend/index.html
+
+GitHub cannot run `server.js`. For upload/queue/TV playback, run `node server.js` locally on the same machine. The config files point GitHub Pages at `http://localhost:8080` when the server is running.
+
+## Project layout
+
+- `backend/` — admin UI + API (`server.js`)
+- `frontend/` — TV display (also served at `/tv` when backend runs)
+- `backend/uploads/` — uploaded media (not committed; see `.gitignore`)
+- `backend/data/state.json` — queue state (not committed)
 
 ## Notes
 
-- Data persists in `backend/data/state.json`
-- Uploaded media files are saved in `backend/uploads/`
-- UI assets (logo, placeholders) are in `backend/media/`
+- No third-party hosting required
+- Data and uploads stay on your machine
+- `package.json` is included if you prefer `npm start` instead of `node server.js`
