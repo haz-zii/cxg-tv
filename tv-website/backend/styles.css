@@ -28,6 +28,12 @@ body {
   --panel-height: min(947px, 82vh);
 }
 
+.main,
+.main * {
+  font-family: "Mulish", sans-serif !important;
+  font-optical-sizing: auto;
+}
+
 #logo {
   width: 319px;
   height: 83px;
