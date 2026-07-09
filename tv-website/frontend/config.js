@@ -4,6 +4,7 @@
   const isGitHubPages = host.endsWith("github.io");
 
   const LOCAL_BACKEND = "http://localhost:8080";
+  const DEPLOYED_BACKEND = "https://cxg-tv-backend.onrender.com";
 
   let apiBase = "";
   if (isLocal) {
@@ -12,12 +13,12 @@
         ? window.location.origin
         : LOCAL_BACKEND;
   } else if (isGitHubPages) {
-    apiBase = LOCAL_BACKEND.replace(/\/$/, "");
+    apiBase = DEPLOYED_BACKEND;
   }
 
   window.TV_CONFIG = {
     apiBase,
     isGitHubPages,
-    isLocalOnly: true,
+    isLocalOnly: false,
   };
 })();

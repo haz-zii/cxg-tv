@@ -3,13 +3,8 @@
   const isLocal = host === "localhost" || host === "127.0.0.1";
   const isGitHubPages = host.endsWith("github.io");
 
-  // Local-only setup: run `node server.js` on your machine, then use:
-  //   Admin: http://localhost:8080
-  //   TV:    http://localhost:8080/tv
-  //
-  // If you open the GitHub Pages site on the SAME computer while the server
-  // is running, this points the UI at your local API:
   const LOCAL_BACKEND = "http://localhost:8080";
+  const DEPLOYED_BACKEND = "https://cxg-tv-backend.onrender.com";
 
   let apiBase = "";
   if (isLocal) {
@@ -18,12 +13,12 @@
         ? window.location.origin
         : LOCAL_BACKEND;
   } else if (isGitHubPages) {
-    apiBase = LOCAL_BACKEND.replace(/\/$/, "");
+    apiBase = DEPLOYED_BACKEND;
   }
 
   window.TV_CONFIG = {
     apiBase,
     isGitHubPages,
-    isLocalOnly: true,
+    isLocalOnly: false,
   };
 })();
