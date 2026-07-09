@@ -4,7 +4,7 @@
   const isGitHubPages = host.endsWith("github.io");
 
   const LOCAL_BACKEND = "http://localhost:8080";
-  const DEPLOYED_BACKEND = "https://cxg-tv-backend.onrender.com";
+  const DEPLOYED_BACKEND = "https://api.cxg.sa";
 
   let apiBase = "";
   if (isLocal) {
@@ -12,7 +12,7 @@
       window.location.port === String(new URL(LOCAL_BACKEND).port || 8080)
         ? window.location.origin
         : LOCAL_BACKEND;
-  } else if (isGitHubPages) {
+  } else {
     apiBase = DEPLOYED_BACKEND;
   }
 
